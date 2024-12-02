@@ -1,0 +1,43 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    background-color: #2E865F;
+    height: 10vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-head {
+    color: #F7DC6F;
+}
+
+.nav-head-container {
+    margin-left: 10vw;
+}
+
+.nav-list-container {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.nav-order-list {
+    width: 25vw;
+}
+
+.nav-list-item {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #F7DC6F;
+}

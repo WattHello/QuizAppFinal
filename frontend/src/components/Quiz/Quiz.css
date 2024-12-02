@@ -1,0 +1,118 @@
+.quiz-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 20rem;
+    height: 25rem;
+    background-color: #2E865F;
+    margin: auto;
+    margin-top: 4rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-option {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.quiz-option-btn {
+    width: 15rem;
+    height: 2rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #34C759;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.quiz-option-btn:hover {
+    background-color: #3E8E41;
+}
+
+.quiz-game-handle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+}
+
+.quiz-quit {
+    margin: 1.3rem;
+    color: white;
+    background-color: #FFD700;
+    width: 4.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 1.7rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quiz-quit:hover {
+    background-color: #FFC400;
+}
+
+.quiz-next {
+    margin: 1.3rem;
+    color: white;
+    background-color: #34C759;
+    width: fit-content;
+    height: 2.5rem;
+    border: none;
+    border-radius: 1.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.quiz-next:hover {
+    background-color: #3E8E41;
+}
+
+.quiz-question-no {
+    width: 16rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz-question {
+    width: 16rem;
+    align-self: flex-start;
+    margin-left: 1rem;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.quiz-title {
+    color: #F7DC6F;
+    font-size: 1.5rem;
+}
+
+.quiz-q-score {
+    color: white;
+}
+
+.submit {
+    margin: 1.3rem;
+    color: white;
+    width: 6rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 1.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #34C759;
+}
+
+.success {
+    background-color: #d1ce22;
+}
+
+.error {
+    background-color: rgb(209, 39, 39);
+}
