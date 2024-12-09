@@ -38,8 +38,9 @@ cd backend/frontend
 
 3. Install the required dependencies:
 
-npm install axios bcrypt cors dotenv express jsonwebtoken mongoose uuid (backend)
-npm install @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/react-toastify axios browserify-zlib react react-dom react-router-dom react-scripts react-toastify web-vitals (frontend)
+1a. npm install axios bcrypt cors dotenv express jsonwebtoken mongoose uuid (backend)
+
+1b. npm install @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/react-toastify axios browserify-zlib react react-dom react-router-dom react-scripts react-toastify web-vitals (frontend)
 
 ## Configuration
 
