@@ -1,65 +1,73 @@
-import React, { useEffect, useState } from 'react';
-import {Link} from "react-router-dom"
-import { useAuth} from '../../AuthContext/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import './Navbar.css';
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext/AuthContext';
 import { useQuiz } from '../../AuthContext/quizContext';
- const Navbar=({token})=>{
-    console.log(token);
-    const {AuthDispatch,username}=useAuth();
-    const{quizDispatch}=useQuiz();
-    console.log(username);
-   // const [token,settoken]=useState("");
+import './Navbar.css';
 
-    // useEffect(()=>{
-    //     const token=localStorage.getItem('token');
-    //     console.log(token);
-    //     settoken(token);
-    // })
-    const navigate=useNavigate();
+const Navbar = ({ token }) => {
+    const { AuthDispatch, username } = useAuth();
+    const { quizDispatch } = useQuiz();
+    const navigate = useNavigate();
 
-    const logoutUser=()=>{
-        if(token){
+    const logoutUser = () => {
+        if (token) {
             localStorage.clear();
-            //settoken("");
-            AuthDispatch({
-                type:"TOKEN",
-                payload:""
-            })
+            AuthDispatch({ type: 'TOKEN', payload: '' });
         }
-       navigate('/auth/login');
-    }
+        navigate('/auth/login');
+    };
 
-    const handlehome=()=>{
-        quizDispatch({
-            type:'INITIAL'
-          })
-    }
-    return(
-    <header className='nav-container'>
-        <div className='nav-head-container'>
-            <h1 className='nav-head'>Quizzacal</h1>
-        </div>
-        <nav className='nave-onorder-list'>
-            <ul className='nav-list-container'>
-                 <li className='nav-lisi-item'>
-                   <Link to ='/' className='nav-link' onClick={handlehome}>Home</Link>
-                 </li>
-                {token?  <li className='nav-lisi-item'>
-                <span className='nav-link'>{username}</span>
-                <Link to ='/auth/login' className='nav-link' onClick={logoutUser}>Logout</Link>
-                
-                </li>
-                :
-                <li className='nav-lisi-item'>
-                <Link to ='/auth/login' className='nav-link' onClick={logoutUser}>Login</Link>
-    
-                <Link to ='/auth/signup' className='nav-link' onClick={logoutUser}>Register</Link>
-                </li>
-                }
-            </ul>
-        </nav>
-    </header>
-    )
- };
- export default Navbar;
+    const handleHome = () => {
+        quizDispatch({ type: 'INITIAL' });
+    };
+
+    return (
+        <header className="nav-container">
+            <div className="nav-head-container">
+                <h1 className="nav-head">Quizzacal</h1>
+            </div>
+            <nav className="nav-order-list">
+                <ul className="nav-list-container">
+                    <li className="nav-list-item">
+                        <NavLink 
+                            to="/" 
+                            className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} 
+                            onClick={handleHome}
+                        >
+                            Home
+                        </NavLink>
+                    </li>
+                    {token ? (
+                        <li className="nav-list-item">
+                            <span className="nav-link">{username}</span>
+                            <NavLink 
+                                to="/auth/login" 
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} 
+                                onClick={logoutUser}
+                            >
+                                Logout
+                            </NavLink>
+                        </li>
+                    ) : (
+                        <li className="nav-list-item">
+                            <NavLink 
+                                to="/auth/login" 
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Login
+                            </NavLink>
+                            <NavLink 
+                                to="/auth/signup" 
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                            >
+                                Register
+                            </NavLink>
+                        </li>
+                    )}
+                </ul>
+            </nav>
+        </header>
+    );
+};
+
+export default Navbar;

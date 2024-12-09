@@ -1,46 +1,39 @@
-import React from 'react'
-import './QuizCard.css'
-import { useAuth } from '../../AuthContext/AuthContext';
-import { useQuiz } from '../../AuthContext/quizContext';
+import React from 'react';
+import './QuizCard.css';
 import { useNavigate } from 'react-router-dom';
+import { useQuiz } from '../../AuthContext/quizContext';
 
-function QuizCard({QuizDetails}) {
- const navigate=useNavigate();
-//  const {token}=useAuth();
- const {image,title,description,category}=QuizDetails;
-  const {quizDispatch}=useQuiz();
+function QuizCard({ QuizDetails }) {
+  const navigate = useNavigate();
+  const { quizDispatch } = useQuiz();
+  const { image, title, description, category } = QuizDetails;
 
-   const handleUser=()=>{
-     const token=localStorage.getItem('token');
-     localStorage.setItem('category',category);
-     if(token){
-        quizDispatch({
-            type:"CATEGORY",
-            payload:category
-        })
-        navigate('/quiz');
-     }
-     else{
-        navigate('/auth/login');
-     }
-   }
+  const handleQuizStart = () => {
+    const token = localStorage.getItem('token');
+    localStorage.setItem('category', category);
+    
+    quizDispatch({
+      type: "CATEGORY",
+      payload: category
+    });
+
+    navigate(token ? '/quiz' : '/auth/login');
+  };
 
   return (
-        <div className="quiz-card-container">
-            <div className="quiz-image-container">
-                <img className='quiz-image' src={image} alt="image" />
-            </div>
-            <div className="quiz-card-details">
-            <div>
-             <span className='quiz-card-font quiz-card-title '>{title}</span>
-            </div>
-            <div className="description">
-                <span className='quiz-card-font'>{description}</span>
-            </div>
-            <button className='quiz-card-btn' onClick={handleUser}>Play Now</button>
-            </div>
-        </div>
-  )
+    <div className="quiz-card-container">
+      <div className="quiz-image-container">
+        <img className="quiz-image" src={image} alt={title} />
+      </div>
+      <div className="quiz-card-details">
+        <h2 className="quiz-card-font quiz-card-title">{title}</h2>
+        <p className="quiz-card-font description">{description}</p>
+        <button className="quiz-card-btn" onClick={handleQuizStart}>
+          Play Now
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default React.memo(QuizCard);
