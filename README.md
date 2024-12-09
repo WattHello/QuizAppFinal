@@ -43,7 +43,7 @@ npm install @testing-library/jest-dom @testing-library/react @testing-library/us
 
 ## Configuration
 
-1. Create a `.env` file in the root directory of the project.
+1. Create a `.env` file in the backend directory of the project.
 
 2. Add the following environment variables to the `.env` file:
 
